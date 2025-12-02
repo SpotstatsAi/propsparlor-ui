@@ -1,6 +1,8 @@
-import PropCard from "@/components/PropCard";
+import { API_BASE } from "@/lib/api";
 
-const API = process.env.NEXT_PUBLIC_API_BASE;
+const res = await fetch(`${API_BASE}/player/${params.id}`, {
+  next: { revalidate: 60 },
+});
 
 export default async function PlayerPage({ params }) {
   const res = await fetch(`${API}/ui/player/${params.id}`, { cache: "no-cache" });

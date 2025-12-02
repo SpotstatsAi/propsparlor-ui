@@ -1,6 +1,8 @@
-import PlayerCard from "@/components/PlayerCard";
+import { API_BASE } from "@/lib/api";
 
-const API = process.env.NEXT_PUBLIC_API_BASE;
+const res = await fetch(`${API_BASE}/game/${params.id}`, {
+  next: { revalidate: 60 },
+});
 
 export default async function GamePage({ params }) {
   const res = await fetch(`${API}/ui/game/${params.id}`, { cache: "no-cache" });
